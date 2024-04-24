@@ -216,7 +216,7 @@ func (c *Cache[K, V]) Get(key K) (zero V, ok bool) {
 	// Returns nil if the item has been expired.
 	// Do not delete here and leave it to an external process such as Janitor.
 	if item.Expired() {
-		return zero, false
+		return item.Value, false
 	}
 
 	return item.Value, true
